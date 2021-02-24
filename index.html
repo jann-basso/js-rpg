@@ -17,7 +17,7 @@
     <main>
 
          <!----------------- INPUTS P1 AND P2 ----------------->
-        <article class="players players-inputs">
+        <article class="players" id="players-inputs">
 
             <!-- P1 input -->
             <form class="input input-p1">
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label for="p1-input-race">Race</label>
                     <select class="input-race" id="p1-input-race">
-                        <option value="" disabled selected>---</option>
+                        <option value="" disabled selected>who will you be?</option>
                         <option value="human">Human</option>
                         <option value="orc">Orc</option>
                         <option value="elf">Elf</option>
@@ -42,15 +42,16 @@
                 <div class="form-group">
                     <label for="p1-item">Item</label>
                     <select class="input-item" id="p1-input-item">
-                        <option value="" disabled selected>---</option>
+                        <option value="" disabled selected>your lucky artefact</option>
                         <option value="boots">Boots</option>
                         <option value="staff">Staff</option>
                         <option value="sword">Sword</option>
-                        <option value="bow">Boz</option>
+                        <option value="bow">Bow</option>
                     </select>
-                </div>
+                </div>  
+
             </form>
-           
+
 
             <!-- P2 input -->
             
@@ -65,7 +66,7 @@
                 <div class="form-group">
                     <label for="p2-input-race">Race</label>
                     <select class="input-race" id="p2-input-race">
-                        <option value="" disabled selected>---</option>
+                        <option value="" disabled selected>who will you be?<option>
                         <option value="human">Human</option>
                         <option value="orc">Orc</option>
                         <option value="elf">Elf</option>
@@ -76,21 +77,26 @@
                 <div class="form-group">
                     <label for="p2-item">Item</label>
                     <select class="input-item" id="p2-input-item">
-                        <option value="" disabled selected>---</option>
+                        <option value="" disabled selected>your lucky artefact</option>
                         <option value="boots">Boots</option>
                         <option value="staff">Staff</option>
                         <option value="sword">Sword</option>
-                        <option value="bow">Boz</option>
+                        <option value="bow">Bow</option>
                     </select>
                 </div>
+
             </form>
+
+            <button class="createchar" id="p1-p2-createchar" type="submit" value="create characters">create character</button>   
+           
+                   
            
         </article>
 
 
 
         <!----------------- AVATAR AND ACTION P1 AND P2 ----------------->
-        <article class="players players-avataraction">
+        <article class="players" id="players-avataraction">
 
         <!----------------- PLAYER 1 ----------------->
             <section id="player1">
@@ -99,12 +105,15 @@
                     <div class="divavatar avatar-name" id="p1-avatar-name">(input name)</div>
                     <div class="divavatar avatar-race" id="p1-avatar-race">(input race)</div>
                     <div class="divavatar avatar-item" id="p1-avatar-item">(input item)</div>
-                    <div class=" divavatar avatar-health" id="p1-avatar-health">(health)</div>
+                    <div class=" divavatar avatar-health" id="p1-avatar-health">
+                        <section class="progress">
+                            <div class="progress-value" id="p1-health"></div>
+                        </section>
+                    </div>
                 </article>
 
                 <!-- P1 actions -->
                 <article class="action action-p1">
-                    <div class="logscreen" id="p1-logscreen">(log screen)</div>
                     <button class="btn btn-hit-p1" id="p1-btnhit" value="hit">Hit</button>
                     <button class="btn btn-heal-p1" id="p1-btnheal" value="heal">Heal</button>
                     <button class="btn btn-health-p1" id="p1-btnhealth" value="health">Health</button>
@@ -118,23 +127,33 @@
                     <div class="divavatar avatar-name" id="p2-avatar-name">(input name)</div>
                     <div class="divavatar avatar-race" id="p2-avatar-race">(input race)</div>
                     <div class="divavatar avatar-item" id="p2-avatar-item">(input item)</div>
-                    <div class="divavatar avatar-health" id="p2-avatar-health">(health)</div>
+                    <div class="divavatar avatar-health" id="p2-avatar-health">
+                        <section class="progress">
+                            <div class="progress-value" id="p2-health"></div>
+                        </section> 
+                    </div>
+                    
                 </article>
 
                 <!-- P2 actions -->
                 <article class="action action-p2">
-                    <div class="logscreen" id="p2-logscreen">(log screen)</div>
                     <button class="btn btn-hit-p2" id="p2-btnhit" value="hit">Hit</button>
                     <button class="btn btn-heal-p2" id="p2-btnheal" value="heal">Heal</button>
                     <button class="btn btn-health-p2" id="p2-btnhealth" value="health">Health</button>
                 </article>
             </section>
 
+            <!----------------- LOG SCREEN ----------------->
+            <section id="logscreen">
+                <p id="logscreen-text">(log screen)</p>
+            </section>
+
         </article>
+         
 
     </main>
 
 
-
+<script src="charater.js"></script>
 </body>
 </html>
