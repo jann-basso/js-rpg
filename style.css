@@ -25,6 +25,7 @@ h1 {
     font-size: 3em;
 }
 
+
 main {
     display: grid;
     grid-template-columns: 1fr;
@@ -127,7 +128,7 @@ label {
 }
 
 
-.player2::before {
+#player2::before {
     content: "VS";
     text-align: center;
     font-size: 1.5em;
@@ -168,15 +169,24 @@ label {
 
 .avatar-health {grid-area: health;}
     .progress {
-        width: 90%;
+        background: rgba(255,255,255,0.1);
+        justify-content: flex-start;
+        border-radius: 100px;
+        align-items: center;
+        display: flex;
         height: 10px;
-        outline: 1px solid white;
+        width: 90%;
     }
 
     .progress-value {
-        width: 30%;
+        box-shadow: 0 10px 40px -10px #fff;
+        border-radius: 100px;
+        background: rgb(74, 132, 197);
         height: 10px;
-        background-color: rgb(97, 157, 226);
+    }
+
+    #p1-health, #p2-health {
+        width: 0%;
     }
 
 
