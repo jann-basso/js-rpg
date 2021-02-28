@@ -1,7 +1,7 @@
   // ------------  ITEMS CHANGES FUNCTION ------------ 
 /*   let myplayerItem
 
-  function raceChanges() {
+  function itemChanges() {
         switch (myplayerItem) {
             case "boots":
             // 30% chance to dodge an attack

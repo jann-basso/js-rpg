@@ -29,7 +29,7 @@ let logscreen = document.getElementById("logscreen-text")
             let hitPlayer = Math.floor(Math.random() * (this.maxDamage - this.min + 1) + this.min)
             return hitPlayer
         };
-        console.log(this.damage())
+        console.log(`random damage: ${this.damage()}`)
 
         this.totalDamage = this.damage();
 
@@ -118,14 +118,24 @@ let logscreen = document.getElementById("logscreen-text")
 
         
         function raceChanges() { 
+            if (myplayerRace == "human") {
+                console.log(`random damage: ${myplayer.damage()}`)
+
+                //myplayer.damage() = myplayer.damage() * 0.8  NAO FUNCIONA
+                myplayer.damage() * 0.8
+                console.log(`human damage: ${myplayer.damage() * 0.8}`)
+                return
+            }
+
+            /* 
             switch (myplayerRace) {
                 case "human":
                 // 20% less damage taken
-                    myplayer.damage() = myplayer.damage() * 0.8 
-                    console.log(`HUMAN - damage ${myplayer.damage()}`)
-                    return
+                    myplayer.damage = myplayer.damage * 0.8 
+                    console.log(myplayer.damage())
+                    return 
 
-            /*        
+                   
                  case "orc":
                 // 40% more max health
                     myplayer.maxHealth = ((myplayer.maxHealth / 100) * 40) + myplayer.maxHealth
@@ -160,6 +170,7 @@ let logscreen = document.getElementById("logscreen-text")
         opponent = player2
         raceChanges()
         
+        
         // race change - player 2
        /*  myplayerRace = player2.race
         myplayer = player2
@@ -167,7 +178,6 @@ let logscreen = document.getElementById("logscreen-text")
         raceChanges() */
     
  
-
 })
 
 
