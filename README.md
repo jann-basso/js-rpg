@@ -5,7 +5,6 @@ Jann Basso
 
 ## GitHub Page
 [Play it here](https://jann-basso.github.io/js-rpg/)
-(still in production)
 
 
 
