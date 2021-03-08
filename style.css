@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap');
+
+/* ------------------------------  OVERALL SETUPS ------------------------------  */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#container {
+    height: 100vh;
+    padding: 0 20px;
+    color: white;
+    background-image: url(img/bg-image.jpg);
+    position: relative;
+}
+
+header {
+    text-align: center;
+    padding: 20px;   
+}
+
+h1 {
+    font-family: 'Akaya Kanadaka', cursive;
+    font-size: 3em;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+}
+
+.players {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+
+#forSmallScreen {
+    height: 90%;
+    width: 100%;
+    background-color: rgb(7, 7, 7, 0.8);
+    border-top: 5px solid rgb(74, 132, 197);
+    border-bottom: 5px solid rgb(74, 132, 197);
+    text-align: center;
+    grid-row: 1;
+    grid-column: 1;
+    visibility: hidden;
+}
+    #smallScreentText {
+        grid-column: span 2;
+        font-size: 2em;
+        align-self: center;
+    }
+
+#players-inputs {
+    border: 2px solid rgb(7, 7, 7);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(7, 7, 7, 0.8);
+    grid-row: 1;
+    grid-column: 1;
+}
+
+
+#players-avataraction {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.createchar {
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(74, 132, 197, 0.8);
+    outline: none;
+    grid-column: span 2;
+    width: 100%;
+}
+
+.createchar:hover {
+    background-color: rgb(74, 132, 197);
+    cursor: pointer;
+}
+
+span {
+    float: right;
+}
+
+
+/* ------------------------------  INPUT ------------------------------  */
+
+.input { 
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+h2 {
+    text-align: center;
+    color: rgb(182, 30, 212);
+    text-transform: uppercase; 
+    align-self: center;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 5px;
+}
+
+label {
+    color: rgb(74, 132, 197);
+    font-weight: bold;
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+.input-name, .input-race, .input-item {
+    border: none;  
+    outline: none;
+    border-bottom: 1px solid rgb(74, 132, 197); 
+    background-color: rgba(7, 7, 7, 0.8);
+    color: white;
+    padding: 5px;
+    align-self: flex-start;
+}
+
+.input-name:hover, .input-race:hover, .input-item:hover {
+    background-color:  rgba(74, 132, 197, 0.5); 
+    border-radius: 3px;
+}
+
+::placeholder {
+    color: white;
+}
+
+
+/* ------------------------------  AVATAR ------------------------------  */
+#player1, #player2 {
+    width: 100%;
+    background-color: rgba(7, 7, 7, 0.8);
+}
+
+
+#player2::before {
+    content: "VS";
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: rgb(233, 222, 222);
+    color: rgb(70, 134, 207);
+    position: absolute;
+    transform: translate(-50px, 150px);
+   /*  border: 1px dotted white; */
+}
+
+
+.avatar {
+    display: grid;
+    grid-template-columns: 20% 1fr 1fr;
+    grid-template-areas: 
+    "name health health"
+    "item iteminfo itemaction"
+    "race raceinfo raceaction"
+    "avatarmsg avatarmsg avatarmsg"
+    "raceimg raceimg raceimg"
+    ;
+    border: 2px solid rgb(74, 132, 197);
+    border-radius: 5px;
+    align-items: center;
+    height: 90%;
+}
+
+.divavatar, .divavatar-main {
+    padding: 10px; 
+}
+
+.divavatar-main {
+    background-color: rgb(74, 132, 197, 0.8);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; 
+    border: 1px solid  rgb(255, 255, 255, 0.2);
+    height: 30%;
+}
+
+
+.avatar-name {
+    grid-area: name;
+    font-size: 1vw;
+    overflow: hidden;
+}
+
+.avatar-health {grid-area: health;}
+    .progress {
+        background: rgba(255,255,255,0.1);
+        justify-content: flex-start;
+        border-radius: 100px;
+        align-items: center;
+        display: flex;
+        height: 15px;
+        width: 100%;
+        border: 1px solid  rgb(255, 255, 255, 0.1);
+    }
+
+    .progress-value {
+        box-shadow: 0 10px 40px -10px #fff;
+        border-radius: 100px;
+        background: rgb(74, 132, 197);
+        height: 15px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    #p1-health, #p2-health {
+        width: 0%;
+    }
+
+
+.avatar-item {grid-area: item; font-size: 14px;}
+.avatar-iteminfo {grid-area: iteminfo; text-align: center; height: 50%;}
+.avatar-itemaction {grid-area: itemaction; text-align: center;height: 50%;}
+
+
+.avatar-race {grid-area: race; font-size: 14px;}
+.avatar-raceinfo {grid-area: raceinfo; text-align: center; height: 50%;}
+.avatar-raceaction {grid-area: raceaction; text-align: center; height: 50%;}
+
+.avatar-msg {
+    grid-area: avatarmsg;
+    text-align: center;
+    font-size: 1em;
+    background-color: rgb(255, 255, 255, 0.2);
+    height: 20px;
+}
+
+.avatar-race-img {
+    grid-area: raceimg;
+    height: 150px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+.avatar-images {
+    width: 100%; 
+}
+
+
+
+/* ------------------------------ ACTION ------------------------------ */
+.action {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.btn {
+    border: none;
+    border-radius: 3px;
+    width: 32%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgb(147, 13, 173);
+    color: white;
+    text-transform: lowercase;
+}
+
+.btn:hover {
+    background-color:  rgb(182, 30, 212);
+    cursor: pointer;
+}
+
+
+/* ------------------------------ LOG SCREEN ------------------------------ */
+
+#logscreen {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-top: 1px dashed white;
+    margin: 5px;
+    grid-column: span 2;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+#logscreen-text {
+    padding: 10px;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+
+/* ------------------------------ GAME OVER SCREEN (JS CREATED) ------------------------------ */
+.popupText {
+    font-family: 'DotGothic16', sans-serif;
+}
+
+
+
+
+/* ============================== RESPONSIVE ============================== */
+
+@media screen and (max-width: 765px) {
+    #forSmallScreen {
+        visibility: visible;
+    }
+    
+    
+    #players-inputs {
+        visibility: hidden;
+    }
+    
+    
+    #players-avataraction {
+        visibility: hidden;
+    }
+}
