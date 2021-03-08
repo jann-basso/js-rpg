@@ -26,6 +26,24 @@ function inactivePlayer(groupbtnA, hitbtnA, healbtnA, yieldbtnA, groupbtnB, hitb
     yieldbtnB.disabled = false   
 }
 
+// ------------  INACTIVE HEAL BUTTON AFTER USING IT 3 TIMES ------------ 
+// count text on buttons to use when calling function
+/* 
+let countP1 = document.getElementById("count-p1")
+let countP2 = document.getElementById("count-p2")
+*/
+// function
+
+/* function disableHeal(counter, healbtn, countbtn) {
+    counter--
+    console.log(counter)
+    countbtn.innerHTML = `${counter}`
+    if (counter < 1) {
+        alert("you don't have more healing powers")
+        healbtn.disabled = true
+    } 
+}  */
+
 
 // ------------  CLEAR VS SCREEN ------------ 
 function clearVSscreen() {
@@ -40,9 +58,9 @@ function clearVSscreen() {
 // ------------  HEALTH BAR ------------ 
 function healthBar() {
     hbP1.style.width = player1.currentHealth + "%"
-    hbP1.innerHTML = Math.round((player1.currentHealth)*10)/10 + "%"
+    hbP1.innerHTML = player1.currentHealth + "%"
     hbP2.style.width = player2.currentHealth + "%"
-    hbP2.innerHTML = Math.round((player2.currentHealth)*10)/10 + "%"
+    hbP2.innerHTML = player2.currentHealth + "%"
 }
 
 // ------------  TEXT HIGHLIGHTING ------------ 
@@ -199,86 +217,74 @@ function currentTime() {
 
     
 // ======================  HEAL BUTTON ======================
-
+counter1 = 3
      // ------------  PLAYER 1  ------------  
-    counter1 = 3
-    btnhealP1.addEventListener("click", () => { 
+     btnhealP1.addEventListener("click", () => {  
+        clearVSscreen()
+        inactivePlayer(btnsP1, btnHitP1, btnhealP1, btnyieldP1, btnsP2, btnHitP2, btnhealP2, btnyieldP2)
+
+        console.log(`************** ${player1.name} healing **************`)
+        logscreen.innerHTML += `<br><br> ************** ${player1.name.toUpperCase()} healing ************** <span>${currentTime()}</span>`
+
+        // heal
+        player1.heal()
+        msgP1.innerHTML = `Healing: ${player1.healing}`
+        highlightFor(msgP1)
         
-        if(player1.currentHealth == player1.maxHealth) {
-            alert("Your health is already full, try hitting your opponent!")
-            
-        } else {
-            let countP1 = document.getElementById("count-p1")
-            function disableHeal1() { // disable heal button after 3 uses
-                counter1--
-                countP1.innerHTML = `${counter1}`
-                if (counter1 < 0) {
-                    alert("you don't have more healing powers")
-                    btnhealP1.disabled = true
-                    btnhealP1.style.opacity = "50%"
-                    countP1.innerHTML = 0
-    
-                } else {
-                    clearVSscreen()
-                    inactivePlayer(btnsP1, btnHitP1, btnhealP1, btnyieldP1, btnsP2, btnHitP2, btnhealP2, btnyieldP2)
-    
-                    console.log(`************** ${player1.name} healing **************`)
-                    logscreen.innerHTML += `<br><br> ************** ${player1.name.toUpperCase()} healing ************** <span>${currentTime()}</span>`
-            
-                    // heal
-                    player1.heal()
-                    msgP1.innerHTML = `Healing: ${player1.healing}`
-                    highlightFor(msgP1)
-                    
-                    // health bar
-                    healthBar()
-                }
-            }
-            disableHeal1() 
-        }
-     
+        // health bar
+        healthBar()
+
+        // disable heal button after 3 uses
+        let countP1 = document.getElementById("count-p1")
+        
+        //disableHeal(counter1, btnhealP1, countP1)
+        function disableHeal1() {
+            counter1--
+            console.log(counter1)
+            countP1.innerHTML = `${counter1}`
+            if (counter1 < 1) {
+                alert("you don't have more healing powers")
+                btnhealP1.disabled = true
+            } 
+        } 
+        disableHeal1()
+        
         
     })
    
-    
+counter2 = 3
     // ------------  PLAYER 2  ------------  
-    counter2 = 3
     btnhealP2.addEventListener("click", () => {   
-        
-        if(player2.currentHealth == player2.maxHealth) {
-            alert("Your health is already full, try hitting your opponent!")
+        clearVSscreen()
+        inactivePlayer(btnsP2, btnHitP2, btnhealP2, btnyieldP2, btnsP1, btnHitP1, btnhealP1, btnyieldP1)
 
-        } else {
-            let countP2 = document.getElementById("count-p2")
-            function disableHeal2() { // disable heal button after 3 uses
-                counter2--
-                countP2.innerHTML = `${counter2}`
-                if (counter2 < 0) {
-                    alert("you don't have more healing powers")
-                    btnhealP2.disabled = true
-                    btnhealP2.style.opacity = "50%"
-                    countP2.innerHTML = 0
+        console.log(`************** ${player2.name} healing **************`)
+        logscreen.innerHTML += `<br><br> ************** ${player2.name.toUpperCase()} healing ************** <span>${currentTime()}</span>`
 
-                } else {
-                    clearVSscreen()
-                    inactivePlayer(btnsP2, btnHitP2, btnhealP2, btnyieldP2, btnsP1, btnHitP1, btnhealP1, btnyieldP1)
-            
-                    console.log(`************** ${player2.name} healing **************`)
-                    logscreen.innerHTML += `<br><br> ************** ${player2.name.toUpperCase()} healing ************** <span>${currentTime()}</span>`
-            
-                    // heal
-                    player2.heal()
-                    msgP2.innerHTML = `Healing: ${player2.healing}`
-                    highlightFor(msgP2)
-            
-                    // health bar
-                    healthBar()
-                }
+        // heal
+        player2.heal()
+        msgP2.innerHTML = `Healing: ${player2.healing}`
+        highlightFor(msgP2)
+
+        // health bar
+        healthBar()
+
+        // disable heal button after 3 uses
+        let countP2 = document.getElementById("count-p2")
+        //disableHeal(counter2, btnhealP2, countP2)
+
+        function disableHeal2() {
+            counter2--
+            console.log(counter2)
+            countP2.innerHTML = `${counter2}`
+            if (counter2 < 1) {
+                alert("you don't have more healing powers")
+                btnhealP2.disabled = true
             } 
-            disableHeal2()
-        }
+        } 
+        disableHeal2()
 
-    }) 
+    })
 
 
 // ======================  HEAL BUTTON ====================== 

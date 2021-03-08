@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap');
 
-/* OVERALL SETUPS */
+/* ------------------------------  OVERALL SETUPS ------------------------------  */
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +13,7 @@
     padding: 0 20px;
     color: white;
     background-image: url(img/bg-image.jpg);
+    position: relative;
 }
 
 header {
@@ -41,6 +42,23 @@ main {
     gap: 20px;
 }
 
+#forSmallScreen {
+    height: 90%;
+    width: 100%;
+    background-color: rgb(7, 7, 7, 0.8);
+    border-top: 5px solid rgb(74, 132, 197);
+    border-bottom: 5px solid rgb(74, 132, 197);
+    text-align: center;
+    grid-row: 1;
+    grid-column: 1;
+    visibility: hidden;
+}
+    #smallScreentText {
+        grid-column: span 2;
+        font-size: 2em;
+        align-self: center;
+    }
+
 #players-inputs {
     border: 2px solid rgb(7, 7, 7);
     border-radius: 5px;
@@ -49,7 +67,7 @@ main {
     background-color: rgb(7, 7, 7, 0.8);
     grid-row: 1;
     grid-column: 1;
-} 
+}
 
 
 #players-avataraction {
@@ -74,21 +92,23 @@ main {
     cursor: pointer;
 }
 
+span {
+    float: right;
+}
 
 
-/* INPUT */
+/* ------------------------------  INPUT ------------------------------  */
 
 .input { 
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 10px;
     color: rgb(182, 30, 212);
     text-transform: uppercase; 
+    align-self: center;
 }
 
 .form-group {
@@ -100,6 +120,8 @@ h2 {
 label {
     color: rgb(74, 132, 197);
     font-weight: bold;
+    align-self: flex-end;
+    margin-bottom: 10px;
 }
 
 .input-name, .input-race, .input-item {
@@ -109,6 +131,7 @@ label {
     background-color: rgba(7, 7, 7, 0.8);
     color: white;
     padding: 5px;
+    align-self: flex-start;
 }
 
 .input-name:hover, .input-race:hover, .input-item:hover {
@@ -121,7 +144,7 @@ label {
 }
 
 
-/* AVATAR */
+/* ------------------------------  AVATAR ------------------------------  */
 #player1, #player2 {
     width: 100%;
     background-color: rgba(7, 7, 7, 0.8);
@@ -136,36 +159,48 @@ label {
     width: 70px;
     height: 70px;
     border-radius: 100px;
-    background-color: rgb(70, 134, 207);
+    background-color: rgb(233, 222, 222);
+    color: rgb(70, 134, 207);
     position: absolute;
-    transform: translate(-50px, 110px);
-    border: 1px dotted white;
+    transform: translate(-50px, 150px);
+   /*  border: 1px dotted white; */
 }
 
 
 .avatar {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 20% 1fr 1fr;
     grid-template-areas: 
     "name health health"
-    "item item item"
-    "race race race"
+    "item iteminfo itemaction"
+    "race raceinfo raceaction"
+    "avatarmsg avatarmsg avatarmsg"
+    "raceimg raceimg raceimg"
     ;
     border: 2px solid rgb(74, 132, 197);
     border-radius: 5px;
     align-items: center;
+    height: 90%;
 }
 
-.divavatar {
+.divavatar, .divavatar-main {
     padding: 10px; 
 }
 
-.avatar-race {
-    grid-area: race;
-    height: 150px;
+.divavatar-main {
+    background-color: rgb(74, 132, 197, 0.8);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; 
+    border: 1px solid  rgb(255, 255, 255, 0.2);
+    height: 30%;
 }
-.avatar-name {grid-area: name;}
-.avatar-item {grid-area: item;}
+
+
+.avatar-name {
+    grid-area: name;
+    font-size: 1vw;
+    overflow: hidden;
+}
 
 .avatar-health {grid-area: health;}
     .progress {
@@ -174,15 +209,18 @@ label {
         border-radius: 100px;
         align-items: center;
         display: flex;
-        height: 10px;
-        width: 90%;
+        height: 15px;
+        width: 100%;
+        border: 1px solid  rgb(255, 255, 255, 0.1);
     }
 
     .progress-value {
         box-shadow: 0 10px 40px -10px #fff;
         border-radius: 100px;
         background: rgb(74, 132, 197);
-        height: 10px;
+        height: 15px;
+        font-size: 13px;
+        text-align: center;
     }
 
     #p1-health, #p2-health {
@@ -190,7 +228,38 @@ label {
     }
 
 
-/* ACTION */
+.avatar-item {grid-area: item; font-size: 14px;}
+.avatar-iteminfo {grid-area: iteminfo; text-align: center; height: 50%;}
+.avatar-itemaction {grid-area: itemaction; text-align: center;height: 50%;}
+
+
+.avatar-race {grid-area: race; font-size: 14px;}
+.avatar-raceinfo {grid-area: raceinfo; text-align: center; height: 50%;}
+.avatar-raceaction {grid-area: raceaction; text-align: center; height: 50%;}
+
+.avatar-msg {
+    grid-area: avatarmsg;
+    text-align: center;
+    font-size: 1em;
+    background-color: rgb(255, 255, 255, 0.2);
+    height: 20px;
+}
+
+.avatar-race-img {
+    grid-area: raceimg;
+    height: 150px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+.avatar-images {
+    width: 100%; 
+}
+
+
+
+/* ------------------------------ ACTION ------------------------------ */
 .action {
     text-align: center;
     display: flex;
@@ -216,60 +285,48 @@ label {
 }
 
 
-/* LOG SCREEN */
+/* ------------------------------ LOG SCREEN ------------------------------ */
 
 #logscreen {
     background-color: black;
     color: white;
     padding: 10px;
-    font-family: 'DotGothic16', sans-serif;
     border-top: 1px dashed white;
     margin: 5px;
     grid-column: span 2;
     width: 100%;
+    height: 200px;
+    overflow-y: scroll;
 }
 
 #logscreen-text {
     padding: 10px;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+
+/* ------------------------------ GAME OVER SCREEN (JS CREATED) ------------------------------ */
+.popupText {
+    font-family: 'DotGothic16', sans-serif;
 }
 
 
 
-/***** RESPONSIVE *****/
 
-@media screen and (min-width: 481px) {
-    /* input */
-    .form-group {
-        display: grid;
-        grid-template-columns: 20% 1fr;
+/* ============================== RESPONSIVE ============================== */
+
+@media screen and (max-width: 765px) {
+    #forSmallScreen {
+        visibility: visible;
     }
     
-    .input-race, .input-item {
-        margin-left: 20px;
-        width: 90%;
+    
+    #players-inputs {
+        visibility: hidden;
     }
     
-    .input-name {
-        margin-left: 20px;
-        width: 84%;
-    }
-
-}
-
-
-@media screen and (min-width: 1025px) {
-    /* input */
-    .input {
-        display: block;
-    }
-
-    .form-group {
-        display: inline-block;
-    }
-
-    .input-name, .input-race, .input-item {
-        margin-left: 0px;
-        width: 90%;
-    }
     
+    #players-avataraction {
+        visibility: hidden;
+    }
 }
