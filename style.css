@@ -42,22 +42,6 @@ main {
     gap: 20px;
 }
 
-#forSmallScreen {
-    height: 90%;
-    width: 100%;
-    background-color: rgb(7, 7, 7, 0.8);
-    border-top: 5px solid rgb(74, 132, 197);
-    border-bottom: 5px solid rgb(74, 132, 197);
-    text-align: center;
-    grid-row: 1;
-    grid-column: 1;
-    visibility: hidden;
-}
-    #smallScreentText {
-        grid-column: span 2;
-        font-size: 2em;
-        align-self: center;
-    }
 
 #players-inputs {
     border: 2px solid rgb(7, 7, 7);
@@ -94,6 +78,22 @@ main {
 
 span {
     float: right;
+}
+
+
+#forSmallScreen {
+    position: absolute;
+    top: 25%;
+    background-color: rgb(7, 7, 7, 0.8);
+    border-top: 5px solid rgb(74, 132, 197);
+    border-bottom: 5px solid rgb(74, 132, 197);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 90%;
+    text-align: center;
+    visibility: hidden; 
 }
 
 
